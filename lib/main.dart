@@ -47,6 +47,18 @@ class _MyAppState extends State<MyApp> {
         key: _scaffoldKey,
         appBar: AppBar(
           title: const Text("Demo App"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.image),
+              tooltip: 'Image Icon',
+              onPressed: () {},
+            ), //IconButton
+            IconButton(
+              icon: const Icon(Icons.settings),
+              tooltip: 'Setting Icon',
+              onPressed: () {},
+            ), //IconButton
+          ],
           backgroundColor: const Color.fromARGB(255, 195, 195, 199),
           leading: IconButton(
             icon: const Icon(Icons.menu),
