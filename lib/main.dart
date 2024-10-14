@@ -15,15 +15,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final List<Widget> _spaces = <Widget>[
-    const Text('Home Page',
-        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-    const Text('Search Page',
-        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-    const Text('Account Page',
-        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-  ];
-
   int _counter = 0;
 
   void _incrementCounter() {
@@ -38,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   // Pages list initialization here
   List<Widget> getPages() {
     return [
-      HomePage(counter: _counter, spaces: _spaces, index: _index),
+      HomePage(counter: _counter, index: _index),
       const SearchPage(),
       const AccountPage(),
     ];
@@ -69,7 +60,7 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {},
             ), //IconButton
           ],
-          backgroundColor: const Color.fromARGB(255, 215, 221, 218),
+          backgroundColor: const Color.fromARGB(255, 195, 195, 199),
           elevation: 50.0,
           leading: IconButton(
             icon: const Icon(Icons.menu),
@@ -167,12 +158,8 @@ class _MyAppState extends State<MyApp> {
   Container buildMyNavBar(BuildContext context) {
     return Container(
       height: 60,
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 215, 221, 218),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -205,7 +192,7 @@ class _MyAppState extends State<MyApp> {
             },
             icon: pageIndex == 1
                 ? const Icon(
-                    Icons.work_rounded,
+                    Icons.search,
                     color: Colors.white,
                     size: 35,
                   )
@@ -242,13 +229,11 @@ class _MyAppState extends State<MyApp> {
 
 class HomePage extends StatelessWidget {
   final int counter;
-  final List<Widget> spaces;
   final int index;
 
   const HomePage({
     super.key,
     required this.counter,
-    required this.spaces,
     required this.index,
   });
 
@@ -260,7 +245,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            spaces.elementAt(index), // Display current page title
+            const Text(
+              'Home Page',
+              style: TextStyle(
+                color: Color.fromARGB(255, 137, 139, 137),
+                fontSize: 45,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -277,19 +269,43 @@ class HomePage extends StatelessWidget {
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xffC4DFCB),
       child: const Center(
-        child: Text(
-          "Search Page",
-          style: TextStyle(
-            color: Color.fromARGB(255, 181, 182, 181),
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Search Page',
+              style: TextStyle(
+                color: Color.fromARGB(255, 137, 139, 137),
+                fontSize: 45,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.map),
+              title: Text('Map'),
+            ),
+            ListTile(
+              leading: Icon(Icons.photo_album),
+              title: Text('Album'),
+            ),
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+            ),
+            ListTile(
+              leading: Icon(Icons.contacts),
+              title: Text('Contact'),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Setting'),
+            ),
+          ],
         ),
       ),
     );
