@@ -4,6 +4,7 @@ import 'pages/search_page.dart';
 import 'pages/account_page.dart';
 import 'drawer/app_drawer.dart';
 import 'widgets/bottom_nav_bar.dart';
+import 'pages/new_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,8 +52,15 @@ class _MyAppState extends State<MyApp> {
             IconButton(
               icon: const Icon(Icons.image),
               tooltip: 'Image Icon',
-              onPressed: () {},
-            ), //IconButton
+              onPressed: () {
+                Navigator.of(_scaffoldKey.currentContext!).push(
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const NewPage()), // Correct context used here
+                );
+              },
+            ),
+            //IconButton
             IconButton(
               icon: const Icon(Icons.settings),
               tooltip: 'Setting Icon',

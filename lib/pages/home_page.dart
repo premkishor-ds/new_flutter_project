@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final int counter;
-  const HomePage({Key? key, required this.counter}) : super(key: key);
+  const HomePage({super.key, required this.counter});
 
   @override
   Widget build(BuildContext context) {
