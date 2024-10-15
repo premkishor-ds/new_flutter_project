@@ -4,7 +4,8 @@ import 'pages/search_page.dart';
 import 'pages/account_page.dart';
 import 'drawer/app_drawer.dart';
 import 'widgets/bottom_nav_bar.dart';
-import 'pages/new_page.dart';
+import 'pages/image_page.dart';
+import 'pages/setting_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                 Navigator.of(_scaffoldKey.currentContext!).push(
                   MaterialPageRoute(
                       builder: (context) =>
-                          const NewPage()), // Correct context used here
+                          const ImagePage()), // Correct context used here
                 );
               },
             ),
@@ -64,7 +65,13 @@ class _MyAppState extends State<MyApp> {
             IconButton(
               icon: const Icon(Icons.settings),
               tooltip: 'Setting Icon',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(_scaffoldKey.currentContext!).push(
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const SettingPage()), // Correct context used here
+                );
+              },
             ), //IconButton
           ],
           backgroundColor: const Color.fromARGB(255, 195, 195, 199),
